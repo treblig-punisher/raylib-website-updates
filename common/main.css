@@ -656,8 +656,7 @@ a#game-template:hover {
 }
 .back-to-top-arrow:hover{
     cursor: pointer;
-}
-    
+}   
 
 @media only screen and (max-width: 600px) {
 
@@ -669,10 +668,6 @@ a#game-template:hover {
     .platforms, .bindings, #extralibs, .raylibtech {
         text-align: center;
     }
-    /* .content {
-        padding: 30px 50px 0;
-    } */
-
     .architecture-image-container img {
         width: 100%;
     }
@@ -685,8 +680,6 @@ a#game-template:hover {
     /* fixes menu + scrolling for mobile */
     .header {
         display: flex;
-        /* width: 840px; */
-        /* width: 100vw; */        
         /* Internet Explorer 10+ */
         -ms-overflow-style: none;  
         /* Firefox */
@@ -697,10 +690,7 @@ a#game-template:hover {
     }
     
     .header-container { 
-         /* width: 100dvw;  */
         width: 100%;
-        /* width: 840px; */
-        /* width: 100vw;         */
     }
     .page{
         padding-inline: var(--mobile-inline-padding);
@@ -708,19 +698,12 @@ a#game-template:hover {
     }
     .menu {
         display: flex;
-        /* this width is currently based on the websites normal menu */
-        /* width: 712px;  */
-        /* right: unset; */
-        /* width: 100dvw; */
     }
 
     #logo {
         flex-direction: column; 
         flex-shrink: 0;
     }
-    
-
-
 }
 
 @media  print{
