@@ -36,10 +36,12 @@
 }
 
 :root {
+    /* --content-width: 840px; */
     --content-width: 840px;
 }
 
 * {
+    box-sizing: border-box;
     padding: 0px;
     margin: 0px;
     font-family: grixel_acme_7_wide_xtnd, Courier New, Verdana, Arial;
@@ -48,11 +50,13 @@
 
 html {
     scroll-behavior: smooth;
+    width: 100%;
 }
 
 body {
     /* background-color: #ddd; */
     background-color: #f5f5f5;
+    
 }
 
 a {
@@ -79,41 +83,49 @@ h2 {
     line-height: 24px;
 }
 
-h2::before {
+/* h2::before {
     content: '';
     display: block;
     width: 100%;
     height: 144px;
     margin: -144px 0px 0px;
-}
+} */
 
 .page {
-    width: min(var(--content-width), 100vw);
+    --mobile-inline-padding: 10px;
+    display: flex;
+    max-width: var(--content-width);
+    position: relative;
     min-height: fit-content;
-    margin: 0 auto;
+    margin-inline: auto;
     padding-top: 128px;
-
-    background-color: #f5f5f5;
+    background-color: #f5f5f5;    
+    flex-direction: column;
+    border-top: none;
+    
+}
+.break-before-footing-spacing{
+    margin-top: 20px;
+}
+.nav-container {
     display: flex;
     flex-direction: column;
-
-    border-top: none;
+    height: 100%;
+    justify-content: space-between;
 }
-
-.header-container {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-
-    width: max(100%, var(--content-width));
+.header-container{
     display: flex;
+    position: fixed;
+    /* top: 0px;
+    left: 0px; */
+    /* width: max(100%, var(--content-width)); */
+    /* max-width: var(--content-width); */
+    width: 100dvw;
+
     flex-direction: row;
     justify-content: center;
-
     background-color: white;
-
     border-bottom: 2px solid #8c8c8c;
-
     z-index: 100;
 }
 
@@ -122,25 +134,41 @@ h2::before {
     width: var(--content-width);
     height: 128px;
     font-size: 10pt;
-
     background-color: #fff;
-
     overflow-x: auto;
     overflow-y: hidden;
+    /* padding-inline: 30px; */
 }
 
 .content {
+    display: flex;
+    position: relative;
+    /* max-width: var(--content-width); */
+    
+    flex-direction: column;
+    /* justify-items: center; */
+    overflow: hidden;
     font-size: 8pt;
     padding-top: 30px;
-    float: left;
-    position: relative;
+    
+    /* padding-inline: 30px; */
+    /* padding-inline: 30px; */
+    
+    /* padding-inline: 30px; */
+}
+.awards-container{
+    display: flex;
+    
+    flex-direction: column;
+    align-items: center;
+    margin-block: 50px;            
 }
 
 .footer {
     width: 100%;
     border-top: 1px solid #c8c8c8;
     text-align: right;
-    height: 40px;
+    height: 50px;
     padding-top: 10px;
     background-color: #f5f5f5;
 }
@@ -179,7 +207,13 @@ h2::before {
 .downloadButtonInstaller {
     font-size: x-small;
 }
-
+.link-and-title {
+    display: flex;
+    margin-block: 20px;
+    width: fit-content;
+    /* justify-items: center; */
+    /* align-items: center; */
+}
 .anchor-link {
     margin-right: 8px;
     width: 16px;
@@ -218,30 +252,32 @@ li {
 }
 
 .menu {
-    width: calc(100% - 128px);
+    /* display: grid; */
+    /* width: calc(100% - 128px); */
     height: 48px;
-
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
+    /* position: absolute; */
+    /* bottom: 0px;
+    right: 0px; */
     overflow-x: auto;
     overflow-y: hidden;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    flex-wrap: nowrap;
-
+    display: flex;    
+    /* justify-self: self-end; */
+    /* flex-direction: row; */
+    /* justify-content: right; */
+    /* flex-wrap: nowrap; */
+    /* justify-content: space-evenly; */
     background-color: #fff;
 }
 
 .menu a {
     height: 48px;
-    padding: 0px 20px;
+    /* padding: 0px 10px; */
+    /* margin-inline: auto; */
+    padding-inline: 10px;
     color: #505050;
-    font-size: 12pt;
+    font-size: clamp(8pt, 1.5vw, 12pt);
     line-height: 40px;
-    float: left;
+    /* float: left; */
     position: relative;
     transition: 0.125s;
 
@@ -251,16 +287,21 @@ li {
 
 .menu a:hover {
     color: #000;
-    padding: 0px 20px;
+    /* padding: 0px 20px; */
 }
 
 #active {
-    height: 46px;
+    /* height: 46px; */
+    /* align-self: center; */
+    /* text */
+    /* display: flex; */
+    /* align-self: center; */
     padding: 0px 20px;
     color: #000;
-    font-size: 12pt;
+    font-size: clamp(5px, 1.5vw, 12pt);
     line-height: 36px;
-    float: left;
+    /* text-align: center; */
+    /* float: left; */
     position: relative;
 
     border: 2px solid #c8c8c8;
@@ -300,6 +341,7 @@ li {
     display: flex;
     justify-content: center;
 }
+
 
 .architecture-image-container img {
     border: 2px solid #c8c8c8;
@@ -576,6 +618,7 @@ li {
     display: block;
     text-align: center;
     overflow: auto;
+     margin-block: 40px;
 }
 
 .icon {
@@ -595,21 +638,21 @@ a#game-template:hover {
     background-color: white;
 }
 
-#platforms>a>img {
+.platforms > a > img {
     border: 6px solid #888888;
     transition: all .2s ease;
 }
 
-#platforms>a>img:hover {
+.platforms > a > img:hover {
     border: 6px solid #111111;
 }
 
-#bindings>a>img {
+.bindings>a>img {
     border: 6px solid #888888;
     transition: all .2s ease;
 }
 
-#bindings>a>img:hover {
+.bindings>a>img:hover {
     border: 6px solid #111111;
 }
 
@@ -621,13 +664,46 @@ a#game-template:hover {
     filter: contrast(200%);
 }
 
-#raylibtech>a>img {
+.raylibtech>a>img {
     transition: all .2s ease;
 }
 
-#raylibtech>a>img:hover {
+.raylibtech>a>img:hover {
     filter: contrast(180%);
 }
+@keyframes springAnim{
+    0%{
+        transform: scale(0);
+    }
+    30%{
+        transform: scale(1.8);
+    }
+    50%{
+        transform: scale(0.9);
+    }
+
+    100%{
+        transform: scale(1);
+    }
+}
+.spring-anim-class{
+    animation: springAnim 0.6s forwards;
+}
+.back-to-top-arrow{
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    z-index: 20;
+    padding: 20px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.back-to-top-arrow:hover{
+    cursor: pointer;
+}
+    
 
 @media only screen and (max-width: 600px) {
 
@@ -636,12 +712,12 @@ a#game-template:hover {
         padding-left: 8px;
     }
 
-    #platforms, #bindings, #extralibs, #raylibtech {
+    .platforms, .bindings, #extralibs, .raylibtech {
         text-align: center;
     }
-    .content {
-        padding: 30px 10px 0;
-    }
+    /* .content {
+        padding: 30px 50px 0;
+    } */
 
     .architecture-image-container img {
         width: 100%;
@@ -649,33 +725,53 @@ a#game-template:hover {
 
     #itchioframe iframe {
         max-width: calc(100vw - 20px);
+       
     }
 
     /* fixes menu + scrolling for mobile */
     .header {
         display: flex;
-        width: 100vw;
-        -ms-overflow-style: none;  /* Internet Explorer 10+ */
-        scrollbar-width: none;  /* Firefox */
+        /* width: 840px; */
+        /* width: 100vw; */        
+        /* Internet Explorer 10+ */
+        -ms-overflow-style: none;  
+        /* Firefox */
+        scrollbar-width: none;  
     }
     .header::-webkit-scrollbar { 
         display: none;  /* Safari and Chrome */
     }
     
-    .header-container {
-        width: 100vw;
+    .header-container { 
+         /* width: 100dvw;  */
+        width: 100%;
+        /* width: 840px; */
+        /* width: 100vw;         */
     }
-
+    .page{
+        padding-inline: var(--mobile-inline-padding);
+        width: 100dvw;
+    }
     .menu {
-        width: 712px; /* this width is currently based on the websites normal menu */
-        right: unset;
+        display: flex;
+        /* this width is currently based on the websites normal menu */
+        /* width: 712px;  */
+        /* right: unset; */
+        /* width: 100dvw; */
     }
 
     #logo {
         flex-direction: column; 
         flex-shrink: 0;
     }
+    
 
 
+}
+
+@media  print{
+    .back-to-top-arrow{
+        display: none;
+    }
 
 }
