@@ -41,9 +41,9 @@
 }
 
 * {
-    box-sizing: border-box;
-    padding: 0px;
+    /* box-sizing: border-box; */
     margin: 0px;
+    padding: 0px;
     font-family: grixel_acme_7_wide_xtnd, Courier New, Verdana, Arial;
     line-height: 24px;
 }
@@ -108,15 +108,17 @@ h2 {
 .header-container{
     display: flex;
     position: fixed;
-    width: 100dvw;
+    width: 100%;
     flex-direction: row;
     justify-content: center;
+    margin-inline: auto;
     background-color: white;
     border-bottom: 2px solid #8c8c8c;
     z-index: 100;
 }
 
 .header {
+    /* display: flex; */
     position: relative;
     width: var(--content-width);
     height: 128px;
@@ -138,8 +140,7 @@ h2 {
     display: flex;
     
     flex-direction: column;
-    align-items: center;
-    margin-block: 50px;            
+    align-items: center;         
 }
 
 .footer {
@@ -187,7 +188,6 @@ h2 {
 }
 .link-and-title {
     display: flex;
-    margin-block: 20px;
     width: fit-content;
 }
 .anchor-link {
@@ -233,11 +233,12 @@ li {
     overflow-y: hidden;
     display: flex;    
     background-color: #fff;
+    /* scrollbar */
 }
 
 .menu a {
     height: 48px;
-    padding-inline: 10px;
+    padding-inline: 20px;
     color: #505050;
     font-size: 12pt;
     line-height: 40px;
@@ -307,13 +308,16 @@ li {
 }
 
 #social {
-    width: fit-content;
-    height: fit-content;
-    float: right;
-    margin-right: 0px;
-    margin-top: 8px;
     display: flex;
     flex-direction: row;
+    
+    width: fit-content;
+    height: fit-content;
+    margin-left: auto;
+    /* float: right; */
+    /* margin-right: 0px; */
+    margin-top: 8px;
+    
 }
 
 #social a {
@@ -572,7 +576,7 @@ li {
     display: block;
     text-align: center;
     overflow: auto;
-     margin-block: 40px;
+     /* margin-block: 0px; */
 }
 
 .icon {
@@ -679,7 +683,6 @@ a#game-template:hover {
 
     /* fixes menu + scrolling for mobile */
     .header {
-        display: flex;
         /* Internet Explorer 10+ */
         -ms-overflow-style: none;  
         /* Firefox */
