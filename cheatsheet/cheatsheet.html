@@ -49,9 +49,9 @@
             background-color: #f5f5f5;
         }
 
-        #fulldata {
+        /* #fulldata {
             width: 1315px !important;
-        }
+        } */
 
         .eximage img {
             margin: 0 auto;
@@ -76,11 +76,12 @@
         pre code {
             font-family: Courier New;
             font-size: 12px;
-            width: auto !important;
+            max-width: 100%;
+            /* width: auto !important; */
             border: 1px solid;
             border-color: #b0b0b0;
-            width: 758px;
-            height: auto;
+            /* width: 758px; */
+            /* height: auto; */
         }
 
         .exdownbtn {
@@ -165,7 +166,7 @@
         #header {
             position: relative;
             height: 110px;
-            width: 1000px;
+            max-width: 1000px;
         }
 
         #title,
@@ -194,7 +195,7 @@
 
         #version {
             margin-top: 23px;
-            width: 500px;
+            /* width: 500px; */
         }
 
         #pcore {
@@ -284,30 +285,41 @@
         .back-to-top-arrow:hover {
             cursor: pointer;
         }
-
+        
         #cheatsheet-navigation-menu {
+            --mobile-breaking-point: 600px;
             display: flex;
             position: fixed;
             flex-direction: column;
             z-index: 20;
             top: 224px;
             right: 210px;
-            width: 250px;
+            width: 180px;
             outline: 4px solid black;
             background-color: white;
             padding-block: 20px;
             gap: 10px;
             overflow: hidden;
             transition: right 0.4s;
+            .modules-title {
+                font-family: sans-serif;
+                font-size: 1.2rem;
+                padding-left: 20px;
+                font-weight: bold;
+                margin: 0;
+            }
+            @media screen and (width <= 600px) {
+                
+                width: 160px;
+                top: unset;
+                bottom: 0px;       
+                .cheatsheet-menu-option a {
+                    font-size: 0.7rem;
+                }         
+            }
         }
 
-        #cheatsheet-navigation-menu .modules-title {
-            font-family: sans-serif;
-            font-size: 1.2rem;
-            padding-left: 20px;
-            font-weight: bold;
-            margin: 0;
-        }
+        
 
         #cheatsheet-navigation-menu ul {
             margin: 0;
