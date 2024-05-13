@@ -354,75 +354,95 @@
                 display: none;
             }
         }
+        /* for the tired programmers at night */
+        .darkmode{background-color:#1e1e1e; color:#e1e1e1;}
+        .darkmode a{color:#e1e1e1;}
+        .darkmode #header{background-color:#1e1e1e; color:#e1e1e1;}
+        .darkmode #title{color:#e1e1e1;}
+        .darkmode #plinks{color:#e1e1e1;}
+        .darkmode #plinks a{color:#e1e1e1;}
+        .darkmode #plinks a:hover{color:#e1e1e1;}
+        .darkmode #version{color:#e1e1e1;}
+        .darkmode #pcore{color:#e1e1e1;}
+        .darkmode #pshapes{color:#e1e1e1;}
+        .darkmode #ptextures{color:#e1e1e1;}
+        .darkmode #ptext{color:#e1e1e1;}
+        .darkmode #pmodels{color:#e1e1e1;}
+        .darkmode #paudio{color:#e1e1e1;}
+        .darkmode #pstructs{color:#e1e1e1;}
+        .darkmode #pcolors{color:#e1e1e1;}
+
+         @media screen and (max-width: 1550px) {
+            #fullgroup {
+                grid-template-columns: auto;
+            }
+
+            .leftgroup, .rightgroup {
+                overflow-x: auto;
+            }
+         }
     </style>
 
     <script type="text/javascript">
-        $(document).ready(function () {
-            $.get('raylib_core.c', function (data) {
-                $('#core pre code').text(data);
-                $('#core pre code').each(function (i, e) { hljs.highlightBlock(e) });
-            }, 'text');
-            $.get('raylib_shapes.c', function (data) {
-                $('#shapes pre code').text(data);
-                $('#shapes pre code').each(function (i, e) { hljs.highlightBlock(e) });
-            }, 'text');
-            $.get('raylib_textures.c', function (data) {
-                $('#textures pre code').text(data);
-                $('#textures pre code').each(function (i, e) { hljs.highlightBlock(e) });
-            }, 'text');
-            $.get('raylib_text.c', function (data) {
-                $('#text pre code').text(data);
-                $('#text pre code').each(function (i, e) { hljs.highlightBlock(e) });
-            }, 'text');
-            $.get('raylib_models.c', function (data) {
-                $('#models pre code').text(data);
-                $('#models pre code').each(function (i, e) { hljs.highlightBlock(e) });
-            }, 'text');
-            $.get('raylib_audio.c', function (data) {
-                $('#audio pre code').text(data);
-                $('#audio pre code').each(function (i, e) { hljs.highlightBlock(e) });
-            }, 'text');
-            $.get('raylib_colors.c', function (data) {
-                $('#colors pre code').text(data);
-                $('#colors pre code').each(function (i, e) { hljs.highlightBlock(e) });
-            }, 'text');
-            $.get('raylib_structs.c', function (data) {
-                $('#structs pre code').text(data);
-                $('#structs pre code').each(function (i, e) { hljs.highlightBlock(e) });
-            }, 'text');
-        });
-        const sectionElements = []
-        let liElements = []
-        let currentIndex = 0;
-        window.addEventListener("load", () => {
-            liElements = Array.from(document.querySelectorAll("cheatsheet-menu-option"))
-            // console.log(liElements[0].getAttribute("data-intersecting"));
-            sectionElements.push(document.querySelector("#pcore"),
-                document.querySelector("#pshapes"),
-                document.querySelector("#ptextures"),
-                document.querySelector("#ptext"),
-                document.querySelector("#pmodels"),
-                document.querySelector("#paudio"),                
-                document.querySelector("#pstructs"),
-                document.querySelector("#pcolors"))
+        document.addEventListener('DOMContentLoaded', function() {
+            function addModule(url, targetSelector) {
+                fetch(url)
+                    .then(response => response.text())
+                    .then(data => {
+                        document.querySelector(targetSelector).innerHTML = data;
+                        document.querySelectorAll(targetSelector).forEach(function(e) {
+                            hljs.highlightBlock(e);
+                        });
+                    })
+                    .catch(error => console.error('Could not get ' + url, error));
+            }
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, entryIndex) => {
-                    const index = sectionElements.indexOf(entry.target);
-                    console.log(index)
-                    if (entry.isIntersecting) {
-                        console.log(entry)
-                        // liElements[index].setAttribute("data-intersecting", "true");
-                    } else {
-                        // liElements[index].setAttribute("data-intersecting", "false");
-                    }
-
-                })
-            })
-            sectionElements.forEach((element) => {
-                observer.observe(element)
-            })
+            addModule('raylib_core.c', '#core pre code');
+            addModule('raylib_shapes.c', '#shapes pre code');
+            addModule('raylib_textures.c', '#textures pre code');
+            addModule('raylib_text.c', '#text pre code');
+            addModule('raylib_models.c', '#models pre code');
+            addModule('raylib_audio.c', '#audio pre code');
+            addModule('raylib_colors.c', '#colors pre code');
+            addModule('raylib_structs.c', '#structs pre code');
         });
+        //this is under construction, so I commented it out. It'll be used for the go to section menu so that sections get highlighted when you
+        //scroll to them. -Gilbert Matos 5/12/2024 
+        //const sectionElements = []
+        //let liElements = []
+        //let currentIndex = 0;
+        // window.addEventListener("load", () => {
+        //     liElements = Array.from(document.querySelectorAll("cheatsheet-menu-option"))
+        //     // console.log(liElements[0].getAttribute("data-intersecting"));
+        //     sectionElements.push(document.querySelector("#pcore"),
+        //         document.querySelector("#pshapes"),
+        //         document.querySelector("#ptextures"),
+        //         document.querySelector("#ptext"),
+        //         document.querySelector("#pmodels"),
+        //         document.querySelector("#paudio"),                
+        //         document.querySelector("#pstructs"),
+        //         document.querySelector("#pcolors"))
+
+        //     const observer = new IntersectionObserver((entries) => {
+        //         entries.forEach((entry, entryIndex) => {
+        //             const index = sectionElements.indexOf(entry.target);
+        //             console.log(index)
+        //             if (entry.isIntersecting) {
+        //                 console.log(entry)
+        //                 // liElements[index].setAttribute("data-intersecting", "true");
+        //             } else {
+        //                 // liElements[index].setAttribute("data-intersecting", "false");
+        //             }
+
+        //         })
+        //     })
+        //     sectionElements.forEach((element) => {
+        //         observer.observe(element)
+        //     })
+        // });
+        function toggleDarkMode() {
+            document.body.classList.toggle("darkmode");
+        }
 
     </script>
 </head>
@@ -507,7 +527,6 @@
                 <a href="/cheatsheet/raymath_cheatsheet.html">raymath cheatsheet</a>
             </li>
         </ul>
-
             <div id="copyright">
                 <p>raylib quick reference card - Copyright (c) 2013-2024 Ramon Santamaria (<a href="https://www.twitter.com/raysan5">@raysan5</a>)</p>
             </div>
